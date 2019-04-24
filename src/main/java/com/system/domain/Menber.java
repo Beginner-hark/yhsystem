@@ -85,11 +85,8 @@ public class Menber implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Menber [mbid=" + mbid + ", mbname=" + mbname + ", mbsex=" + mbsex + ", mbage=" + mbage + ", mbalance="
-				+ mbalance + ", mbphone=" + mbphone + ", mlid=" + mlid + ", mbstate=" + mbstate + "]";
-	}
-	public String show(){
 		return mbid+"\t"+mbname+"\t"+mbsex+"\t"+mbage+"\t"+mbalance+"\t"+mbphone+"\t"+mlid+"\t"+mbstate;
-	} 
+
+	}
 
 }

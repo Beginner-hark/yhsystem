@@ -69,12 +69,7 @@ public class Torder  implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Torder [tdid=" + tdid + ", tinum=" + tinum + ", utid=" + utid + ", td_date=" + td_date + "]";
-	}
-	
-	
-	public String show(){
-		return tdid+"\t"+tinum+"\t"+utid+"\t"+td_date;
+		 return tdid+"\t"+tinum+"\t"+utid+"\t\t"+td_date;
 	}
 
 

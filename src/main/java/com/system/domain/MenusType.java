@@ -1,6 +1,8 @@
 package com.system.domain;
 
-public class MenusType {
+import java.io.Serializable;
+
+public class MenusType implements Serializable{
 private int mtid;
 private String mtname;
 public MenusType() {
@@ -25,10 +27,8 @@ public void setMtname(String mtname) {
 }
 @Override
 public String toString() {
-	return "MenusType [mtid=" + mtid + ", mtname=" + mtname + "]";
-}
-public String show(){
 	return mtid+"\t"+mtname;
+
 }
 
 }

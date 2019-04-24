@@ -4,6 +4,7 @@ package com.system.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +40,6 @@ private DBUtil db;
 		return false;
 	}
 
-	//查询所有订单
 	@Override
 	public List<Torder> selectAllTorder() {
 		this.db=new DBUtil();
@@ -73,7 +73,6 @@ private DBUtil db;
 		
 	}
 
-	//添加菜品到子菜单
 	@Override
 	public boolean addToTorderMenus(Map map,String s) {
 		System.out.println(s);
@@ -108,26 +107,26 @@ private DBUtil db;
 		return null;
 	}
 
-	
-	//结账
 	@Override
 	public double checkout(String uu, Employee emp) {
 		
 		this.db=new DBUtil();
 		List<Menus>list=new ArrayList<>();
 		double sum=0;
-		String sql="select m.*,tm.num from menus m,torder_menus tm where m.mid=tm.mid";
+		System.out.println(uu);
+		String sql="select m.*,tm.num from menus m,torder_menus tm where m.mid=tm.mid and tm.tinum='"+uu+"'";
 		try {
 			ResultSet rs = this.db.query(sql);
 			while(rs.next()){
 				Menus m=new Menus(rs.getInt("mid"),rs.getString("mname"),rs.getDouble("mprice"),rs.getInt("num"));
 				list.add(m);
-				sum=sum+rs.getDouble("mprice")*rs.getInt("num");
+				if("√".equals(rs.getString("bargain"))){
+					sum=sum+rs.getDouble("mprice")*0.5*rs.getInt("num");
+				}else{
+					sum=sum+rs.getDouble("mprice")*rs.getInt("num");
+				}
+				
 			}
-			/*System.out.println(list.size());
-			for (Menus menus : list) {
-				System.out.println(menus);
-			}*/
 			this.addtorder(uu, emp);
 			return sum;
 		} catch (SQLException e) {
@@ -138,8 +137,31 @@ private DBUtil db;
 		}
 		return 0;
 	}
-	
-	
+	/*
+	 * 将小票打印到本地
+	 * */
+	private void printstub(List<Menus> list,String uu) {
+		
+		System.out.println("          天津市亚惠餐饮餐饮有限公司");
+		System.out.println();
+		System.out.println("--------------------------");
+		System.out.println("单号："+uu);
+		Date date =new Date();
+		SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String format = simp.format(date);
+		System.out.println("销售日期:"+format);
+		System.out.println("--------------------------");
+		System.out.println("菜名  \t单价  \t数量");
+		for (Menus menus : list) {
+			if("√".equals(menus.getBargain())){
+				menus.setMprice(menus.getMprice()*0.5);
+			}
+			menus.showmcheck();
+		}
+		System.out.println("--------------------------");
+		System.out.println("数量："+list.size());
+		System.out.println();
+		}
 	 /*******
 	  * 将订单信息存入torder
 	  * ************/
@@ -165,7 +187,6 @@ private DBUtil db;
 		return null;
 	}
 
-	//查询某一负责人负责的所有订单
 	@Override
 	public List<Torder> selectTorderByUtid(int utid) {
 		this.db=new DBUtil();
@@ -190,11 +211,10 @@ private DBUtil db;
 
 	}
 
-	//根据订单编号查询订单
 	@Override
 	public Torder selectTorderbyCtimun(String ctinum) {
 		this.db=new DBUtil();
-		String sql="select * from torder where tinum="+ctinum;
+		String sql="select * from torder where tinum='"+ctinum+"'";
 		try {
 			ResultSet rs = this.db.query(sql);
 			if(rs.next()){

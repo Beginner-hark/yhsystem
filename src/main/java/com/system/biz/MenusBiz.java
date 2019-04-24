@@ -28,5 +28,8 @@ public interface MenusBiz {
 //统计销售量前num名
 	public List<Menus> selectAllMenusByNo(int num);
 	
+	//打印菜单信息至本地
+	public void printExl();
+	
 
 }

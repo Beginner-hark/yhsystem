@@ -44,7 +44,7 @@ public class Control_server {
 			this.server = new ServerSocket(PORT);
 			// 实例化代理对象
 			this.ttservice=new totalServiceImpl();
-			System.out.println("实例代理对象");
+//			System.out.println("实例代理对象");
 			System.out.println("服务器已开启！");
 			es=Executors.newCachedThreadPool();
 		} catch (IOException e) {
