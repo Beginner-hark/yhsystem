@@ -6,7 +6,6 @@ import java.util.Set;
 
 import com.system.biz.TorderBiz;
 import com.system.dao.TorderDao;
-import com.system.dao.impl.TorderDaoImpl;
 import com.system.domain.Employee;
 import com.system.domain.Menus;
 import com.system.domain.Torder;
@@ -16,7 +15,7 @@ public class TorderBizImpl implements TorderBiz {
 
 	public TorderBizImpl() {
 		super();
-		this.torderDao = new TorderDaoImpl();
+		this.torderDao = torderDao;
 	}
 
 	@Override

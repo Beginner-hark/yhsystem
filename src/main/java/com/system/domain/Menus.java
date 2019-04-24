@@ -52,17 +52,6 @@ public Menus(int mid, String mname, String mtname, double mprice, String bargain
 }
 
 
-public Menus(int mid, String mname, String mtname, double mprice, String bargain, int sum) {
-	super();
-	this.mid = mid;
-	this.mname = mname;
-	this.mtname = mtname;
-	this.mprice = mprice;
-	this.bargain = bargain;
-	this.sum = sum;
-}
-
-
 public Menus(int mid, String mname, int mtid, String mtname, double mprice, String bargain, int sum) {
 	super();
 	this.mid = mid;
@@ -123,16 +112,6 @@ public void setMprice(double mprice) {
 }
 
 
-public String getMtname() {
-	return mtname;
-}
-
-
-public void setMtname(String mtname) {
-	this.mtname = mtname;
-}
-
-
 public String getBargain() {
 	return bargain;
 }
@@ -151,15 +130,7 @@ public String toString() {
 	return "Menus [mid=" + mid + ", mname=" + mname + ", mtid=" + mtid + ", mtname=" + mtname + ", mprice=" + mprice
 			+ ", bargain=" + bargain + ", sum=" + sum + "]";
 }
-public void show(){
-	System.out.println(mid+"\t"+mname+"\t"+mtid+"\t"+mprice+"\t"+bargain);
-}
-public void showmyorder(Object o){
-	System.out.println(mid+"\t"+mname+"\t"+mtid+"\t"+mprice+"\t"+bargain+"\t"+o);
-
-}
-public void showmcheck(){
-	System.out.println(mname+"\t"+mprice+"\t"+sum);
-
+public String show(){
+	return mid+"\t"+mname+"\t"+mtid+"\t"+mprice+"\t"+bargain;
 }
 }

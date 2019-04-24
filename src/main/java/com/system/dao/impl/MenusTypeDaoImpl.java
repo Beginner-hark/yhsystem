@@ -17,6 +17,7 @@ private DBUtil db;
 	this.db = db;
 }
 
+	//查询所有菜单类型
 	@Override
 	public List<MenusType> seletAllMenusType() {
 		this.db=new DBUtil();
@@ -39,93 +40,95 @@ private DBUtil db;
 		}
 		return null;
 	}
-	/*//添加菜品类型
-		public boolean addMenusType(MenusType mt);
-		//删除菜品类型
-		public boolean deleteMenusTypeBymtname(String mtname);
-		//根据菜品类型id 修改菜品类型名
-		public boolean updateMtname(int mtid,String mtname);*/
-		//增加菜品类型
-		@Override
-		public boolean addMenusType(MenusType mt) {
-			// TODO Auto-generated method stub
-			this.db=new DBUtil();
-			String sql="insert into menustype values(?,?)";
-			try {
-				this.db.query(sql,mt.getMtid(),mt.getMtname());
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}finally{
-				this.db.closed();
-			}
-			
+
+	//增加菜品类型
+	@Override
+	public boolean addMenusType(MenusType mt) {
+		// TODO Auto-generated method stub
+		this.db=new DBUtil();
+		String sql="insert into menustype values(?,?)";
+		try {
+			this.db.query(sql,mt.getMtid(),mt.getMtname());
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			this.db.closed();
 		}
 		
-		//删除菜品类型
+	}
+	
+	//删除菜品类型
 
-		@Override
-		public boolean deleteMenusTypeBymtid(int mtid) {
-			// TODO Auto-generated method stub
-			this.db=new DBUtil();
-			String sql="delete from menustype where mtid='"+mtid+"'";
-			try {
-				this.db.query(sql);
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}finally{
-				this.db.closed();
-			}
-			
-			
+	@Override
+	public boolean deleteMenusTypeBymtname(String mtname) {
+		// TODO Auto-generated method stub
+		this.db=new DBUtil();
+		String sql="delete from menustype where mtname='"+mtname+"'";
+		try {
+			this.db.query(sql);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			this.db.closed();
 		}
 		
-		//根据菜品类型id 修改菜品类型名的方法
+		
+	}
+	
+	//根据菜品类型id 修改菜品类型名的方法
 
-		@Override
-		public boolean updateMtname(int mtid, String mtname) {
-			// TODO Auto-generated method stub
-			this.db=new DBUtil();
-			String sql="update menustype set mtname='"+mtname+"'where mtid="+mtid;
-			try {
-				this.db.update(sql);
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}finally{
-				this.db.closed();
-			}
-			
+	@Override
+	public boolean updateMtname(int mtid, String mtname) {
+		// TODO Auto-generated method stub
+		this.db=new DBUtil();
+		String sql="update menustype set mtname='"+mtname+"'where mtid="+mtid;
+		try {
+			this.db.update(sql);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			this.db.closed();
 		}
-		//根据菜单类型id 查找菜单类型的方法
-		@Override
-		public MenusType selectByMtid(int mtid) {
-			// TODO Auto-generated method stub
-			this.db  = new DBUtil();
-			String sql="select * from menustype where mtid="+mtid;
-			try {
-				ResultSet rs=this.db.query(sql);
-				if(rs.next()){
-					MenusType mt=new MenusType();
-					mt.setMtid(rs.getInt("mtid"));
-					mt.setMtname(rs.getString("mtname"));
-					return mt;
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return null;
-			}finally{
-				this.db.closed();
+		
+	}
+
+	//根据菜单类型id 查找菜单类型的方法
+	@Override
+	public MenusType selectByMtid(int mtid) {
+		// TODO Auto-generated method stub
+		this.db  = new DBUtil();
+		String sql="select * from menustype where mtid="+mtid;
+		try {
+			ResultSet rs=this.db.query(sql);
+			if(rs.next()){
+				MenusType mt=new MenusType();
+				mt.setMtid(rs.getInt("mtid"));
+				mt.setMtname(rs.getString("mtname"));
+				return mt;
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
+		}finally{
+			this.db.closed();
 		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
 
 }

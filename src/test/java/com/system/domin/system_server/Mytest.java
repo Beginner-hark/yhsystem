@@ -8,9 +8,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import com.system.biz.TorderBiz;
 import com.system.biz.impl.MenberBizImpl;
-import com.system.biz.impl.TorderBizImpl;
 import com.system.control.totalService;
 import com.system.control.totalServiceImpl;
 import com.system.dao.EmployeeDao;
@@ -36,13 +34,11 @@ DBUtil db=new DBUtil();
 
 }*/
 	public static void main(String[] args) {
-		MenusDao m=new MenusDaoImpl();
-		TorderDaoImpl t=new TorderDaoImpl();
-		totalService ts=new totalServiceImpl();
-		MenberBizImpl mb=new MenberBizImpl();
-		TorderBiz torderBiz=new TorderBizImpl();
-		MenusTypeDaoImpl mtDao=new MenusTypeDaoImpl();
-		totalService tts=new totalServiceImpl();
+//		MenusDao m=new MenusDaoImpl();
+//		TorderDaoImpl t=new TorderDaoImpl();
+//		totalService ts=new totalServiceImpl();
+//		MenberBizImpl mb=new MenberBizImpl();
+		MenusTypeDao mtd=new MenusTypeDaoImpl();
 		/*DBUtil db=new DBUtil()
 		EmployeeDao dao=new EmployeeDaoImpl();
 		Employee emp = dao.selectByAccount("333");
@@ -65,8 +61,7 @@ DBUtil db=new DBUtil();
 	
 //		boolean ba = m.addMenus(new Menus("炸蘑菇",2,20));
 
-
-		//		boolean b = m.deleteMenus(10);
+//		boolean b = m.deleteMenus(10);
 //		System.out.println(m.updateMenus(3));
 //		Menus menusd = m.selectById(1);
 //		System.out.println(menusd);
@@ -79,16 +74,16 @@ DBUtil db=new DBUtil();
 		System.out.println(ud);
 		String string = ud.substring(0, 20);
 		System.out.println(string);*/
-//		String s="ssssssssssss";
-//		Map map=new HashMap<>();
-//		map.put(1, 2);
-//		map.put(2, 1);
-//		Set k = map.keySet();
-//		for (Object object : k) {
-//			System.out.println(object);
-//		}
-//		boolean b = torderBiz.addToTorderMenus(map, s);
-//		System.out.println(b);
+		/*String s="ss1a31sd31313s";
+		Map map=new HashMap<>();
+		map.put(1, 2);
+		map.put(2, 1);
+		Set k = map.keySet();
+		for (Object object : k) {
+			System.out.println(object);
+		}
+		boolean b = t.addToTorderMenus(map, s);
+		System.out.println(b);*/
 		/*double d = t.checkout("ss1a31sd31313s");
 		System.out.println(d);*/
 		/*DATE date =new DATE();
@@ -101,30 +96,14 @@ DBUtil db=new DBUtil();
 			System.out.println(menus);
 		}Menus n = ts.selectById(1);
 		System.out.println(n);*/
-		/*String z = mb.addMenber(new Menber("小dsa","男",15,155,17777777777l));
-	System.out.println(z);*/
-		/*double d = t.checkout("366dcc1c9ac74d01ba88", new Employee(1));
-	System.out.println(d);*/
-		/*List<MenusType> list = mtDao.seletAllMenusType();
-		for (MenusType menusType : list) {
-			System.out.println(menusType);
-		}
-		 List<MenusType> listt = tts.seletAllMenusType();
-		for (MenusType menusType : listt) {
-			System.out.println(menusType);
-		}*/
-		/*Menus mm = m.selectById(1);
-		System.out.println(mm);*/
-//		List<Menus> list = m.selectAllMenusByNo(2);
-//		for (Menus menus : list) {
-//			System.out.println(menus);
-//		}
-//		List<Menus> list = ts.selectAllMenus();
-//		
-//		for (Menus menus : list) {
-//			System.out.println(menus);
-//		}
-		m.printExc();
+		//String z = mb.addMenber(new Menber("小dsa","男",15,155,17777777777l));
+	//System.out.println(z);
+		
+		//System.out.println(mtd.addMenusType(new MenusType(5,"酒水")));
+		
+		
+		//System.out.println(mtd.deleteMenusTypeBymtname("肉菜"));
+		System.out.println(mtd.updateMtname(3, "汤类"));
 		
 	}
 }

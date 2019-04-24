@@ -1,8 +1,6 @@
 package com.system.domain;
 
-import java.io.Serializable;
-
-public class TorderMenus implements Serializable{
+public class TorderMenus {
 private long tinum;//订单编号
 private int mid;//菜编号
 private int num;//数量
@@ -44,8 +42,11 @@ public void setNum(int num) {
 
 @Override
 public String toString() {
-	return tinum+"\t"+mid+"\t"+num;
+	return "TorderMenus [tinum=" + tinum + ", mid=" + mid + ", num=" + num + "]";
+}
 
+public String show(){
+	return tinum+"\t"+mid+"\t"+num;
 }
 
 }

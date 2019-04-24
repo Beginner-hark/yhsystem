@@ -10,6 +10,9 @@ import com.system.util.DBUtil;
 
 public class MenberDaoImpl implements MenberDao{
 private DBUtil db;
+
+
+//添加会员
 	@Override
 	public boolean addMenber(Menber mb) {
 		this.db=new DBUtil();
@@ -29,7 +32,7 @@ private DBUtil db;
 
 	}
 
-	
+	//查询所有会员
 	@Override
 	public List<Menber> selectAllMenber() {
 		this.db=new DBUtil();
@@ -51,6 +54,8 @@ private DBUtil db;
 		}
 
 	}
+	
+	
 	@Override//根据姓名手机号，挂失会员卡
 	public boolean updateMenber(String mname, long phonenumber) {
 		Menber smbp = this.selectmenberByphone(phonenumber);
@@ -97,6 +102,7 @@ private DBUtil db;
 
 	}
 
+	//通过 手机号查询会员
 	@Override
 	public Menber selectmenberByphone(long phone) {
 		this.db=new DBUtil();
@@ -128,6 +134,7 @@ private DBUtil db;
 
 	}
 
+	//通过手机号删除会员
 	@Override
 	public boolean deleteMenberByphone(long phone) {
 		this.db=new DBUtil();
@@ -146,6 +153,7 @@ private DBUtil db;
 
 	}
 
+	//会员解冻
 	@Override
 	public boolean unfreezemenber(long phone) {
 		Menber smbp = this.selectmenberByphone(phone);

@@ -76,14 +76,6 @@ public class MenusBizImpl implements MenusBiz {
 		return this.menusDao.selectAllMenusByNo(num);
 	}
 
-	//打印菜单至本地
-	@Override
-	public void printExl() {
-		
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 
 }

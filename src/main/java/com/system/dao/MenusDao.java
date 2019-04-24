@@ -37,9 +37,6 @@ public interface MenusDao {
 	public List<Menus> statisticsTotalSum();
 //统计销售量前num名
 	public List<Menus> selectAllMenusByNo(int num);
-	
-	//将菜单信息打印至本地Excel 表中
-	public void printExc();
 
 	
 }

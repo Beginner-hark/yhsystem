@@ -5,7 +5,7 @@ import com.system.domain.Employee;
 public interface EmployeeBiz {
 	//根据账户查询员工
 	public Employee selectByAccount(String account);
-//manager添加员工new Employee(utname, utsex, age, hiredate, sal, job, phonenumber, idcard)*****
+	//manager添加员工new Employee(utname, utsex, age, hiredate, sal, job, phonenumber, idcard)*****
 	public String addemployee(Employee employee);
 	
 	//根据员工编号查找员工**

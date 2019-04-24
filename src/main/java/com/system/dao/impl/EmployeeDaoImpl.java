@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.system.dao.EmployeeDao;
@@ -19,17 +18,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		this.db = db;
 	}
 
+	
+	//添加员工
 	@Override//new Employee(utname, utsex, age, hiredate, sal, job, phonenumber, idcard)
 	public boolean addEmployee(Employee e) {
 		// TODO Auto-generated method stub
 				//实例化dbutil 对象
 						this.db=new DBUtil();
 						//创建sql 语句
-						String sql="insert into user_table values(seq_user.nextval,?,?,?,?,?,?,seq_useraccount.nextval,?,?,?)";
+						String sql="insert into user_table values(?,?,?,?,?,?,?,?,?,?,?)";
 						try {
-							Date date =new Date();
-							Timestamp timestamp = new Timestamp(date.getTime());
-							int i=this.db.update(sql,e.getUtname(),e.getUtsex(),e.getAge(),timestamp,e.getSal(),e.getJob(),"123456",e.getPhonenumber(),e.getIdcard());
+							Timestamp timestamp = new Timestamp(e.getHiredate().getTime());
+							int i=this.db.update(sql,e.getUtid(),e.getUtname(),e.getUtsex(),e.getAge(),timestamp,e.getSal(),e.getJob(),e.getAccount(),e.getPassword(),e.getPhonenumber(),e.getIdcard());
 							return i>0;
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
@@ -42,6 +42,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 	}
 
+	
+	//根据员工编号删除员工
 	@Override
 	public boolean deleteEmployee(int utid) {
 
@@ -62,7 +64,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	
-
+//根据员工编号查询员工
 	@Override
 	public Employee selectByUtid(int utid) {
 		this.db=new DBUtil();
@@ -100,6 +102,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	}
 
+	//根据员工编号修改员工工资
 	@Override
 	public boolean updateEmployee(int utid,double sal) {
 		Employee emp=this.selectByUtid(utid);
@@ -119,9 +122,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	}
 
+	// 根据账号查找员工
 	@Override
 	public Employee selectByAccount(String account) {
-		// 根据账号查找员工
+		
 		// 实例化dbutil 对象
 		this.db = new DBUtil();
 		// 创建sql 语句

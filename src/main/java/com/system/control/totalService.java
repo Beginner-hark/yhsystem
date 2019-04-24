@@ -10,7 +10,7 @@ import com.system.domain.MenusType;
 import com.system.domain.Torder;
 
 public interface totalService {
-
+	public int show();
 
 	// 根据账户查询员工
 	public Employee selectByAccount(String account);
@@ -74,12 +74,4 @@ public interface totalService {
 		public List<Menus> statisticsTotalSum();
 		//统计销售量前num名
 		public List<Menus> selectAllMenusByNo(int num);
-		//添加菜品类型
-				public String addMenusType(MenusType mt);
-				//删除菜品类型
-				public String deleteMenustypeByMtid(int mtid);
-				//根据菜品类型id 修改菜品类型名
-				public String updateMtname(int mtid,String mtname);
-				//根据菜单类型id 查找菜单类型
-				public MenusType selectByMtid(int mtid);
 }
